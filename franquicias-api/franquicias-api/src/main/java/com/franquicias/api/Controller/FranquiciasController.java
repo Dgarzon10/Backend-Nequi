@@ -20,25 +20,27 @@ public class FranquiciasController {
 
     @GetMapping()
     public ResponseEntity<List<FranquiciaDTO>> getAllFranquicias(){
-        return null;
+        return ResponseEntity.ok(franquiciaService.getAll());
     }
     @GetMapping("/{id}")
     public ResponseEntity<FranquiciaDTO> getById(@PathVariable Long id){
-        return null;
+        return ResponseEntity.ok(franquiciaService.getById(id));
     }
+
     @PostMapping()
     public ResponseEntity<FranquiciaDTO> createFranquicia(@RequestBody FranquiciaDTO franquiciaDTO){
-        return null;
+        return ResponseEntity.ok(franquiciaService.create(franquiciaDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FranquiciaDTO> updateFranquicia(@PathVariable Long id){
-        return null;
+    public ResponseEntity<FranquiciaDTO> updateFranquicia(@PathVariable Long id, @RequestBody FranquiciaDTO franquiciaDTO){
+        return ResponseEntity.ok(franquiciaService.update(id, franquiciaDTO));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<FranquiciaDTO> deleteFranquicia(@PathVariable Long id){
-        return null;
+    public ResponseEntity<String> deleteFranquicia(@PathVariable Long id){
+        franquiciaService.delete(id);
+        return ResponseEntity.ok("Franquicia eliminada exitosamente!!");
     }
 
 }

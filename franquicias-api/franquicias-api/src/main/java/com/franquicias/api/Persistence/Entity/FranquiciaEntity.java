@@ -52,4 +52,31 @@ public class FranquiciaEntity {
 
     public FranquiciaEntity() {
     }
+
+
+    /// ERROR SET GET
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<SucursalEntity> getSucursales() {
+        return sucursales;
+    }
+
+    public void setSucursales(List<SucursalEntity> sucursales) {
+        this.sucursales = sucursales;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

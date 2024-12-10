@@ -27,6 +27,15 @@ public class ProductoMapper {
 
             return productoDTO;
         }
-    }
+        public static void updateProductoFromDto(ProductoDTO dto, ProductoEntity productoEntity) {
+            if (dto.getNombre() != null) {
+                productoEntity.setNombre(dto.getNombre());
+            }
+            if (dto.getStock() != null) {
+                productoEntity.setStock(dto.getStock());
+            }
+        }
+
+}
 
 

@@ -22,7 +22,7 @@ public class ProductoEntity {
     private String nombre;
 
     @Column(nullable = false)
-    private int Stock;
+    private Integer Stock;
 
     @ManyToOne
     @JoinColumn(name = "sucursal_id",nullable = false)
@@ -42,12 +42,12 @@ public class ProductoEntity {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         ProductoEntity that = (ProductoEntity) o;
-        return Stock == that.Stock && Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre);
+        return Objects.equals(id, that.id) && Objects.equals(nombre, that.nombre) && Objects.equals(Stock, that.Stock) && Objects.equals(sucursal, that.sucursal);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nombre, Stock);
+        return Objects.hash(id, nombre, Stock, sucursal);
     }
 
     @Override
@@ -60,5 +60,36 @@ public class ProductoEntity {
     }
 
     public ProductoEntity() {
+    }
+
+    // ERROR SET y GET
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Integer getStock() {
+        return Stock;
+    }
+
+    public void setStock(Integer stock) {
+        Stock = stock;
+    }
+
+    public SucursalEntity getSucursal() {
+        return sucursal;
     }
 }

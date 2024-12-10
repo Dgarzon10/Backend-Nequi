@@ -54,4 +54,36 @@ public class SucursalEntity {
 
     public SucursalEntity() {
     }
+
+
+    //ERROR SET y GET
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public FranquiciaEntity getFranquicia() {
+        return franquicia;
+    }
+
+    public List<ProductoEntity> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<ProductoEntity> productos) {
+        this.productos = productos;
+    }
 }
