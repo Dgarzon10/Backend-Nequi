@@ -11,11 +11,12 @@ import java.util.stream.Collectors;
 @Component
 public class SucursalMapper {
 
-    public SucursalEntity toEntity(SucursalDTO sucursalDTO){
+    public SucursalEntity toEntity(SucursalDTO sucursalDTO, FranquiciaEntity franquiciaEntity){
 
         SucursalEntity sucursalEntity = new SucursalEntity();
         sucursalEntity.setId(sucursalDTO.getId());
         sucursalEntity.setNombre(sucursalDTO.getNombre());
+        sucursalEntity.setFranquicia(franquiciaEntity);
         sucursalEntity.setProductos(sucursalDTO.getProductos().stream()
                 .map( productoDTO  -> new ProductoMapper().toEntity(productoDTO))
                 .collect(Collectors.toList()));
@@ -28,6 +29,7 @@ public class SucursalMapper {
         SucursalDTO sucursalDTO = new SucursalDTO();
         sucursalDTO.setId(sucursalEntity.getId());
         sucursalDTO.setNombre(sucursalEntity.getNombre());
+        sucursalDTO.setFranquicia_id(sucursalEntity.getFranquicia().getId());
         sucursalDTO.setProductos(sucursalEntity.getProductos().stream()
                 .map(productoEntity -> new ProductoMapper().toDTO(productoEntity))
                 .collect(Collectors.toList()));

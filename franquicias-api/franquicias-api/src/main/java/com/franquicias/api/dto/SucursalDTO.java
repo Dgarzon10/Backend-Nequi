@@ -15,6 +15,7 @@ public class SucursalDTO {
     private Long id;
     private String nombre;
     private List<ProductoDTO> productos;
+    private Long franquicia_id;
 
     public Long getId() {
         return id;
@@ -38,5 +39,13 @@ public class SucursalDTO {
 
     public void setProductos(List<ProductoDTO> productos) {
         this.productos = productos;
+    }
+
+    public Long getFranquicia_id() {
+        return franquicia_id;
+    }
+
+    public void setFranquicia_id(Long franquicia_id) {
+        this.franquicia_id = franquicia_id;
     }
 }

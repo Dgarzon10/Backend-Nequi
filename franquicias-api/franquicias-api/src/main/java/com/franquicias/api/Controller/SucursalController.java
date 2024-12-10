@@ -17,17 +17,20 @@ public class SucursalController {
     public SucursalController(SucursalService sucursalService) {
         this.sucursalService = sucursalService;
     }
+
     @GetMapping()
     public ResponseEntity<List<SucursalDTO>> getAllSucursales(){
-        return null;
+        return ResponseEntity.ok(sucursalService.getAll());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<SucursalDTO> getById(@PathVariable Long id){
-        return null;
+        return ResponseEntity.ok(sucursalService.getById(id));
     }
+
     @PostMapping()
     public ResponseEntity<SucursalDTO> createSucursal(@RequestBody SucursalDTO sucursalDTO){
-        return null;
+        return ResponseEntity.ok(sucursalService.create(sucursalDTO));
     }
 
     @PutMapping("/{id}")
@@ -36,7 +39,8 @@ public class SucursalController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<SucursalDTO> deleteSucursal(@PathVariable Long id){
-        return null;
+    public ResponseEntity<String> deleteSucursal(@PathVariable Long id){
+        sucursalService.delete(id);
+        return ResponseEntity.ok("Eliminado Exitosamente");
     }
 }
