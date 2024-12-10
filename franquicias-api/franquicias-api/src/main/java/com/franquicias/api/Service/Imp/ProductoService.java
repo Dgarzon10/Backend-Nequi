@@ -3,6 +3,7 @@ package com.franquicias.api.Service.Imp;
 import com.franquicias.api.Persistence.Repository.ProductoRepository;
 import com.franquicias.api.Service.GenericService;
 import com.franquicias.api.dto.ProductoDTO;
+import com.franquicias.api.mapping.ProductoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class ProductoService implements GenericService<ProductoDTO, Long> {
     public ProductoService(ProductoRepository productoRepository) {
         this.productoRepository = productoRepository;
     }
+
+    @Autowired
+    private ProductoMapper productoMapper;
 
     @Override
     public ProductoDTO create(ProductoDTO enity) {

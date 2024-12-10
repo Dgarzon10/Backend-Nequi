@@ -49,4 +49,7 @@ public class FranquiciaEntity {
                 ", sucursales=" + sucursales +
                 '}';
     }
+
+    public FranquiciaEntity() {
+    }
 }

@@ -3,6 +3,7 @@ package com.franquicias.api.Service.Imp;
 import com.franquicias.api.Persistence.Repository.SucursalRepository;
 import com.franquicias.api.Service.GenericService;
 import com.franquicias.api.dto.SucursalDTO;
+import com.franquicias.api.mapping.SucursalMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,10 @@ public class SucursalService implements GenericService<SucursalDTO, Long> {
     public SucursalService(SucursalRepository sucursalRepository) {
         this.sucursalRepository = sucursalRepository;
     }
+
+    @Autowired
+    private SucursalMapper sucursalMapper;
+
 
     @Override
     public SucursalDTO create(SucursalDTO enity) {

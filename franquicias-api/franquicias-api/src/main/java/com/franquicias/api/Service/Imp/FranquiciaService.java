@@ -2,6 +2,7 @@ package com.franquicias.api.Service.Imp;
 
 
 import com.franquicias.api.Persistence.Repository.FranquiciaRepository;
+import com.franquicias.api.mapping.FranquiciaMapper;
 import org.springframework.stereotype.Service;
 import com.franquicias.api.Service.GenericService;
 import com.franquicias.api.dto.FranquiciaDTO;
@@ -18,6 +19,9 @@ public class FranquiciaService implements GenericService<FranquiciaDTO, Long> {
     public FranquiciaService(FranquiciaRepository franquiciaRepository) {
         this.franquiciaRepository = franquiciaRepository;
     }
+
+    @Autowired
+    private FranquiciaMapper franquiciaMapper;
 
     @Override
     public FranquiciaDTO create(FranquiciaDTO enity) {

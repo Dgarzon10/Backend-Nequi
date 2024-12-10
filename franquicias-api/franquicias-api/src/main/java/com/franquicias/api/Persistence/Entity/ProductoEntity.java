@@ -58,4 +58,7 @@ public class ProductoEntity {
                 ", Stock=" + Stock +
                 '}';
     }
+
+    public ProductoEntity() {
+    }
 }

@@ -51,4 +51,7 @@ public class SucursalEntity {
                 ", productos=" + productos +
                 '}';
     }
+
+    public SucursalEntity() {
+    }
 }
