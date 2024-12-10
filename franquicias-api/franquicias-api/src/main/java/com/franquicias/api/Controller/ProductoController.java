@@ -20,16 +20,18 @@ public class ProductoController {
     }
 
     @GetMapping()
-    public ResponseEntity<ProductoDTO> getAllProductos(){
-        return null;
+    public ResponseEntity<List<ProductoDTO>> getAllProductos(){
+        return ResponseEntity.ok(productoService.getAll());
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<ProductoDTO> getById(@PathVariable Long id){
-        return null;
+        return ResponseEntity.ok(productoService.getById(id));
     }
+
     @PostMapping()
-    public ResponseEntity<ProductoDTO> createProducto(@RequestBody ProductoDTO ProductoDTO){
-        return null;
+    public ResponseEntity<ProductoDTO> createProducto(@RequestBody ProductoDTO productoDTO){
+        return ResponseEntity.ok(productoService.create(productoDTO));
     }
 
     @PutMapping("/{id}")
