@@ -14,6 +14,28 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+    networks:
+      - franquicias-network
+
+  franquicias-api:
+    build: .
+    container_name: franquicias-api
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-franquicias:3306/franquicias_db
+      SPRING_DATASOURCE_USERNAME: app_user
+      SPRING_DATASOURCE_PASSWORD: app_password
+      SPRING_PROFILES_ACTIVE: prod
+    depends_on:
+      - mysql
+    networks:
+      - franquicias-network
 
 volumes:
   mysql-data:
+
+networks:
+  franquicias-network:
+    driver: bridge

@@ -8,8 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class ProductoSucursalDTO {
     private String nombreSucursal;
     private String nombreProducto;

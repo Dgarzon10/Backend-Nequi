@@ -2,7 +2,6 @@ package com.franquicias.api.mapping;
 
 import com.franquicias.api.Persistence.Entity.FranquiciaEntity;
 import com.franquicias.api.Persistence.Entity.SucursalEntity;
-import com.franquicias.api.dto.FranquiciaDTO;
 import com.franquicias.api.dto.SucursalDTO;
 import org.springframework.stereotype.Component;
 

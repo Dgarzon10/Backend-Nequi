@@ -81,7 +81,4 @@ public class ProductoService implements GenericService<ProductoDTO, Long> {
                 .collect(Collectors.toList());
     }
 
-    public ProductoDTO get(){
-        return null;
-    }
 }
