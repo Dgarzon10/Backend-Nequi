@@ -34,9 +34,9 @@ public class FranquiciasController {
         return ResponseEntity.ok(franquiciaService.create(franquiciaDTO));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/nombre/{id}")
     public ResponseEntity<FranquiciaDTO> updateFranquicia(@PathVariable Long id, @RequestBody FranquiciaDTO franquiciaDTO){
-        return ResponseEntity.ok(franquiciaService.update(id, franquiciaDTO));
+        return ResponseEntity.ok(franquiciaService.updateNombre(id, franquiciaDTO.getNombre()));
     }
 
     @DeleteMapping("/{id}")

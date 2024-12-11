@@ -45,6 +45,13 @@ public class FranquiciaService implements GenericService<FranquiciaDTO, Long> {
         return null;
     }
 
+    public FranquiciaDTO updateNombre(Long id, String nombre) {
+        FranquiciaEntity franquicia = franquiciaRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Franquicia not Found"));
+        franquicia.setNombre(nombre);
+        return franquiciaMapper.toDTO(franquiciaRepository.save(franquicia));
+    }
+
     @Override
     public void delete(Long id) {
         franquiciaRepository.findById(id).orElseThrow(
