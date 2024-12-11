@@ -1,16 +1,18 @@
 package com.franquicias.api.mapping;
 
 import com.franquicias.api.Persistence.Entity.ProductoEntity;
+import com.franquicias.api.Persistence.Entity.SucursalEntity;
 import com.franquicias.api.dto.ProductoDTO;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ProductoMapper {
 
-        public ProductoEntity toEntity(ProductoDTO productoDTO) {
+        public ProductoEntity toEntity(ProductoDTO productoDTO, SucursalEntity sucursalEntity) {
 
             ProductoEntity productoEntity = new ProductoEntity();
             productoEntity.setId(productoDTO.getId());
+            productoEntity.setSucursal(sucursalEntity);
             productoEntity.setNombre(productoDTO.getNombre());
             productoEntity.setStock(productoDTO.getStock());
 
@@ -22,6 +24,7 @@ public class ProductoMapper {
 
             ProductoDTO productoDTO = new ProductoDTO();
             productoDTO.setId(productoEntity.getId());
+            productoDTO.setSucursal_id(productoEntity.getSucursal().getId());
             productoDTO.setNombre(productoEntity.getNombre());
             productoDTO.setStock(productoEntity.getStock());
 

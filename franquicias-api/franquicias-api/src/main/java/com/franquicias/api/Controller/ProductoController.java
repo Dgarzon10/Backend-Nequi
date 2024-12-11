@@ -40,7 +40,8 @@ public class ProductoController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ProductoDTO> deleteProducto(@PathVariable Long id){
-        return null;
+    public ResponseEntity<String> deleteProducto(@PathVariable Long id){
+        productoService.delete(id);
+        return ResponseEntity.ok("Eliminado Exitosamente");
     }
 }

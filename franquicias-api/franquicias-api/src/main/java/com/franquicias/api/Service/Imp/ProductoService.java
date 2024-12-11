@@ -1,7 +1,9 @@
 package com.franquicias.api.Service.Imp;
 
 import com.franquicias.api.Persistence.Entity.ProductoEntity;
+import com.franquicias.api.Persistence.Entity.SucursalEntity;
 import com.franquicias.api.Persistence.Repository.ProductoRepository;
+import com.franquicias.api.Persistence.Repository.SucursalRepository;
 import com.franquicias.api.Service.GenericService;
 import com.franquicias.api.dto.ProductoDTO;
 import com.franquicias.api.exception.ResourceNotFoundException;
@@ -16,17 +18,21 @@ import java.util.stream.Collectors;
 public class ProductoService implements GenericService<ProductoDTO, Long> {
 
     private ProductoRepository productoRepository;
-    @Autowired
-    public ProductoService(ProductoRepository productoRepository) {
-        this.productoRepository = productoRepository;
-    }
+    private SucursalRepository sucursalRepository;
 
+    @Autowired
+    public ProductoService(ProductoRepository productoRepository, SucursalRepository sucursalRepository) {
+        this.productoRepository = productoRepository;
+        this.sucursalRepository = sucursalRepository;
+    }
     @Autowired
     private ProductoMapper productoMapper;
 
     @Override
     public ProductoDTO create(ProductoDTO entity) {
-        ProductoEntity productoEntity = productoMapper.toEntity(entity);
+        SucursalEntity sucursalEntity = sucursalRepository.findById(entity.getSucursal_id())
+                .orElseThrow(() -> new ResourceNotFoundException("Sucursal not found"));
+        ProductoEntity productoEntity = productoMapper.toEntity(entity,sucursalEntity);
         ProductoEntity saved = productoRepository.save(productoEntity);
         return productoMapper.toDTO(saved);
     }
@@ -38,6 +44,9 @@ public class ProductoService implements GenericService<ProductoDTO, Long> {
 
     @Override
     public void delete(Long id) {
+        productoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Producto not found"));
+        productoRepository.deleteById(id);
 
     }
 

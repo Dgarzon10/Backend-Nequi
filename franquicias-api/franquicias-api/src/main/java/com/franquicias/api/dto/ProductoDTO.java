@@ -13,6 +13,7 @@ public class ProductoDTO {
     private Long id;
     private String nombre;
     private Integer stock;
+    private Long sucursal_id;
 
     public Long getId() {
         return id;
@@ -37,4 +38,14 @@ public class ProductoDTO {
     public void setStock(Integer stock) {
         this.stock = stock;
     }
+
+    public Long getSucursal_id() {
+        return sucursal_id;
+    }
+
+    public void setSucursal_id(Long sucursal_id) {
+        this.sucursal_id = sucursal_id;
+    }
 }
+
+

@@ -18,7 +18,7 @@ public class SucursalMapper {
         sucursalEntity.setNombre(sucursalDTO.getNombre());
         sucursalEntity.setFranquicia(franquiciaEntity);
         sucursalEntity.setProductos(sucursalDTO.getProductos().stream()
-                .map( productoDTO  -> new ProductoMapper().toEntity(productoDTO))
+                .map( productoDTO  -> new ProductoMapper().toEntity(productoDTO,sucursalEntity))
                 .collect(Collectors.toList()));
 
         return sucursalEntity;
