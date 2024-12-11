@@ -16,7 +16,7 @@ Primero, clona el repositorio del proyecto en tu máquina local:
 
 ```bash
 git clone https://github.com/Dgarzon10/Backend-Nequi
-cd franquicias-api
+cd franquicias-api/franquicias-api
 ```
 ### Paso 2: Construir la aplicación
 Se requiere tener instalado maven.
