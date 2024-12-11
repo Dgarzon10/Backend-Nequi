@@ -30,12 +30,13 @@ public class ProductoMapper {
 
             return productoDTO;
         }
-        public static void updateProductoFromDto(ProductoDTO dto, ProductoEntity productoEntity) {
-            if (dto.getNombre() != null) {
-                productoEntity.setNombre(dto.getNombre());
-            }
+
+        public void updateProductoFromDto(ProductoDTO dto, ProductoEntity productoEntity) {
             if (dto.getStock() != null) {
                 productoEntity.setStock(dto.getStock());
+            }
+            if (dto.getNombre() != null){
+                productoEntity.setNombre(dto.getNombre());
             }
         }
 

@@ -34,9 +34,20 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.create(productoDTO));
     }
 
+    @PutMapping("/stock/{id}")
+    public ResponseEntity<ProductoDTO> updateProductoStock(@PathVariable Long id,@RequestBody ProductoDTO productoDTO){
+        return ResponseEntity.ok(productoService.updateStock(id, productoDTO.getStock()));
+    }
+
+    @PutMapping("/nombre/{id}")
+    public ResponseEntity<ProductoDTO> updateProductoNombre(@PathVariable Long id,@RequestBody ProductoDTO productoDTO){
+        return ResponseEntity.ok(productoService.updateNombre(id, productoDTO.getNombre()));
+    }
+
+    // En caso de querer cambiar ambos
     @PutMapping("/{id}")
-    public ResponseEntity<ProductoDTO> updateProducto(@PathVariable Long id){
-        return null;
+    public ResponseEntity<ProductoDTO> updateProducto(@PathVariable Long id,@RequestBody ProductoDTO productoDTO){
+        return ResponseEntity.ok(productoService.update(id, productoDTO));
     }
 
     @DeleteMapping("/{id}")

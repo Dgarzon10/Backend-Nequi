@@ -39,7 +39,23 @@ public class ProductoService implements GenericService<ProductoDTO, Long> {
 
     @Override
     public ProductoDTO update(Long id, ProductoDTO entity) {
-        return null;
+        ProductoEntity productoEntity = productoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Producto not found"));
+        productoMapper.updateProductoFromDto(entity,productoEntity);
+        return productoMapper.toDTO(productoRepository.save(productoEntity));
+    }
+    public ProductoDTO updateStock(Long id, Integer stock) {
+        ProductoEntity productoEntity = productoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Producto not found"));
+        productoEntity.setStock(stock); // Actualiza directamente el stock
+        return productoMapper.toDTO(productoRepository.save(productoEntity));
+    }
+
+    public ProductoDTO updateNombre(Long id, String nombre) {
+        ProductoEntity productoEntity = productoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Producto not found"));
+        productoEntity.setNombre(nombre); // Actualiza directamente el nombre
+        return productoMapper.toDTO(productoRepository.save(productoEntity));
     }
 
     @Override
@@ -65,7 +81,4 @@ public class ProductoService implements GenericService<ProductoDTO, Long> {
                 .collect(Collectors.toList());
     }
 
-    public ProductoDTO get(){
-        return null;
-    }
 }

@@ -1,7 +1,9 @@
 package com.franquicias.api.Controller;
 
+import com.franquicias.api.Persistence.Entity.ProductoEntity;
 import com.franquicias.api.Service.Imp.FranquiciaService;
 import com.franquicias.api.dto.FranquiciaDTO;
+import com.franquicias.api.dto.ProductoSucursalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,15 +34,20 @@ public class FranquiciasController {
         return ResponseEntity.ok(franquiciaService.create(franquiciaDTO));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/nombre/{id}")
     public ResponseEntity<FranquiciaDTO> updateFranquicia(@PathVariable Long id, @RequestBody FranquiciaDTO franquiciaDTO){
-        return ResponseEntity.ok(franquiciaService.update(id, franquiciaDTO));
+        return ResponseEntity.ok(franquiciaService.updateNombre(id, franquiciaDTO.getNombre()));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteFranquicia(@PathVariable Long id){
         franquiciaService.delete(id);
         return ResponseEntity.ok("Franquicia eliminada exitosamente!!");
+    }
+
+    @GetMapping("/maxStock/{id}")
+    public ResponseEntity<List<ProductoSucursalDTO>> getMaxStockPorSucursal(@PathVariable Long id){
+        return ResponseEntity.ok(franquiciaService.mayorStockPorSucursal(id));
     }
 
 }
