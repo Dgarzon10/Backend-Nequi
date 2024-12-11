@@ -39,7 +39,10 @@ public class ProductoService implements GenericService<ProductoDTO, Long> {
 
     @Override
     public ProductoDTO update(Long id, ProductoDTO entity) {
-        return null;
+        ProductoEntity productoEntity = productoRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Producto not found"));
+        productoMapper.updateProductoFromDto(entity,productoEntity);
+        return productoMapper.toDTO(productoRepository.save(productoEntity));
     }
 
     @Override
