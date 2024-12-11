@@ -33,9 +33,9 @@ public class SucursalController {
         return ResponseEntity.ok(sucursalService.create(sucursalDTO));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<SucursalDTO> updateSucursal(@PathVariable Long id){
-        return null;
+    @PutMapping("/nombre/{id}")
+    public ResponseEntity<SucursalDTO> updateSucursal(@PathVariable Long id, @RequestBody SucursalDTO sucursalDTO){
+        return ResponseEntity.ok(sucursalService.updateNombre(id, sucursalDTO.getNombre()));
     }
 
     @DeleteMapping("/{id}")

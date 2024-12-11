@@ -43,14 +43,21 @@ public class SucursalService implements GenericService<SucursalDTO, Long> {
     }
 
     @Override
-    public SucursalDTO update(Long aLong, SucursalDTO entity) {
+    public SucursalDTO update(Long id, SucursalDTO sucursalDTO) {
         return null;
+    }
+
+    public SucursalDTO updateNombre(Long id, String nombre) {
+        SucursalEntity sucursal = sucursalRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Sucursal not found"));
+        sucursal.setNombre(nombre);
+        return sucursalMapper.toDTO(sucursalRepository.save(sucursal));
     }
 
     @Override
     public void delete(Long id) {
         sucursalRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Sucursal not foud"));
+                .orElseThrow(() -> new ResourceNotFoundException("Sucursal not found"));
         sucursalRepository.deleteById(id);
 
     }
