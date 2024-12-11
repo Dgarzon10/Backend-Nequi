@@ -35,6 +35,9 @@ public class ProductoMapper {
             if (dto.getStock() != null) {
                 productoEntity.setStock(dto.getStock());
             }
+            if (dto.getNombre() != null){
+                productoEntity.setNombre(dto.getNombre());
+            }
         }
 
 }
